@@ -9,8 +9,7 @@ package version
 
 // app - info
 const (
-	AppVersion string = "0.0.1"
-	Version    string = AppVersion
+	Version string = "0.0.1"
 )
 
 // build - info

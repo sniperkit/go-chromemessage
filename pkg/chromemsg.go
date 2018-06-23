@@ -20,7 +20,7 @@ import (
 
 var nativeEndian binary.ByteOrder = endianness()
 
-var defaultMsgr = messenger{
+var defaultMsgr = Messenger{
 	port: bufio.NewReadWriter(bufio.NewReader(os.Stdin), bufio.NewWriter(os.Stdout)),
 	lock: &sync.RWMutex{},
 	rev:  version.Version,
@@ -32,26 +32,26 @@ type Config struct {
 	Verbose  bool
 }
 
-type messenger struct {
+type Messenger struct {
 	rev  string
 	port *bufio.ReadWriter
 	lock *sync.RWMutex
 	conf *Config
 }
 
-func New(port *bufio.ReadWriter) *messenger {
+func New(port *bufio.ReadWriter) *Messenger {
 	if port == nil {
 		port = bufio.NewReadWriter(bufio.NewReader(os.Stdin), bufio.NewWriter(os.Stdout))
 	}
-	return &messenger{
+	return &Messenger{
 		rev:  version.Version,
 		port: port,
 		lock: &sync.RWMutex{},
 	}
 }
 
-func NewWithConfig(conf *Config) (*messenger, error) {
-	m := &messenger{
+func NewWithConfig(conf *Config) (*Messenger, error) {
+	m := &Messenger{
 		rev:  version.Version,
 		lock: &sync.RWMutex{},
 	}
@@ -87,7 +87,7 @@ func Write(msg interface{}) error {
 	return defaultMsgr.Write(msg)
 }
 
-func (m *messenger) Config(conf *Config) error {
+func (m *Messenger) Config(conf *Config) error {
 	m.lock.RLock()
 	m.conf = conf
 
@@ -99,7 +99,7 @@ func (m *messenger) Config(conf *Config) error {
 	return nil
 }
 
-func (m *messenger) Read(data interface{}) error {
+func (m *Messenger) Read(data interface{}) error {
 	m.lock.RLock()
 
 	lengthBits := make([]byte, 4)
@@ -120,7 +120,7 @@ func (m *messenger) Read(data interface{}) error {
 	return nil
 }
 
-func (m *messenger) Write(msg interface{}) error {
+func (m *Messenger) Write(msg interface{}) error {
 	m.lock.Lock()
 
 	json, err := json.Marshal(msg)
