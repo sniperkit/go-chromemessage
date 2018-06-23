@@ -6,6 +6,7 @@ import (
 	"encoding/binary"
 	"encoding/json"
 	"errors"
+	"fmt"
 	"os"
 	"sync"
 	"unsafe"
@@ -50,7 +51,6 @@ func New(port *bufio.ReadWriter) *messenger {
 }
 
 func NewWithConfig(conf *Config) (*messenger, error) {
-
 	m := &messenger{
 		rev:  version.Version,
 		lock: &sync.RWMutex{},
@@ -64,12 +64,16 @@ func NewWithConfig(conf *Config) (*messenger, error) {
 		pp.Println("conf=", conf)
 	}
 
-	if conf.PortType == "buffio" {
+	switch conf.PortType {
+	case Bufio:
+		fmt.Println("creating new port wrapper wuth bufio...")
 		m.port = bufio.NewReadWriter(bufio.NewReader(os.Stdin), bufio.NewWriter(os.Stdout))
-	}
 
-	if m.port == nil {
-		return nil, errors.New("No port defined...")
+	default:
+		return nil, errors.New(
+			fmt.Sprintf("Unkown port wrapper... conf.PortType=%s", conf.PortType),
+		)
+
 	}
 
 	return m, nil
