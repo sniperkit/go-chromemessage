@@ -33,5 +33,14 @@ _testmain.go
 **/.idea/*
 *.iml
 **/viewlater/*
-/vendor/honnef.co/
-/vendor/github.com/
+
+
+vendor
+vendor/
+vendor/*
+vendor/**
+
+node_modules
+node_modules/
+node_modules/*
+node_modules/**
