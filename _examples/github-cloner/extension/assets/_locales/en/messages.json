@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "SNK-VCS Chrome Extension",
+    "description": "SNK-VCS is an application allowing to fetch vcs repositories and index them into a monolithic repository and extract patterns and knowledge from them."
+  },
+  "appDescription": {
+    "message": "SNK-VCS Chrome Extension description",
+    "description": "Github-Cloner allows to clone/fork a repository and apply a serie of hooks (eg. starred repo, rename strings in fork)"
+  }
+}
