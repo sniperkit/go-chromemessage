@@ -31,6 +31,11 @@ _testmain.go
 Icon
 
 
+/bower_components
+/node_modules
+node_modules
+bower_components
+
 # Thumbnails
 ._*
 
