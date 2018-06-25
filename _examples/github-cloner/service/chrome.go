@@ -4,7 +4,7 @@ import (
 	"time"
 
 	// internal - core
-	chromemsg "github.com/sniperkit/snk.golang.chromemsg/pkg"
+	chromemsg "github.com/sniperkit/snk.golang.chrome-extension/pkg"
 )
 
 // defaultChromeMsgConfig sets the default chrome native messenger configuration struct

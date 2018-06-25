@@ -16,7 +16,7 @@ Clicking button runs `extension/main.js` which injects `extension/contentscript.
 
 1. Install the Chrome native host to relay commands to git:
     ```shell
-    $ cd $GOPATH/src/github.com/sniperkit/snk.golang.chromemsg
+    $ cd $GOPATH/src/github.com/sniperkit/snk.golang.chrome-extension
     $ ./shared/scripts/install-native-host.sh
     ```
 

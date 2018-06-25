@@ -12,7 +12,7 @@ A library to parse chrome extension native messages
 
 #### With `go` exectuable
 ```bash
-go install github.com/sniperkit/snk.golang.chromemsg/...
+go install github.com/sniperkit/snk.golang.chrome-extension/...
 ```
 
 #### With Makefile

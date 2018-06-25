@@ -15,7 +15,7 @@ import (
 	"github.com/k0kubun/pp"
 
 	// internal
-	"github.com/sniperkit/snk.golang.chromemsg/pkg/version"
+	"github.com/sniperkit/snk.golang.chrome-extension/pkg/version"
 )
 
 var nativeEndian binary.ByteOrder = endianness()
